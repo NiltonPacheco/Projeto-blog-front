@@ -1,0 +1,44 @@
+<div class="main-login">
+  <div class="left-login">
+    <h1>Faça login <br> E entre para a acelera blog!</h1>
+    <img src="assets/image.svg" class="left-login-image" alt="Logo">
+  </div>
+  <div class="right-login">
+    <form class="card-login" (ngSubmit)="onSubmit()">
+      <h1 *ngIf="!registrando">Login</h1>
+      <h1 *ngIf="registrando">Criar Conta</h1>
+
+      <div *ngIf="registrando" class="textfield">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" [(ngModel)]="nome" placeholder="Nome completo" required>
+      </div>
+      <div class="textfield">
+        <label for="usuario">Usuário</label>
+        <input type="text" id="usuario" name="usuario" [(ngModel)]="usuario" placeholder="Usuário" required>
+      </div>
+      <div class="textfield">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" [(ngModel)]="senha" placeholder="Senha" required>
+      </div>
+      <div *ngIf="registrando" class="textfield">
+        <label for="confirmarSenha">Confirmar Senha</label>
+        <input type="password" id="confirmarSenha" name="confirmarSenha" [(ngModel)]="confirmarSenha" placeholder="Confirme a senha" required>
+      </div>
+      <button class="btn-login" type="submit">
+        {{ registrando ? 'Criar Conta' : 'Login' }}
+      </button>
+      <div *ngIf="erro" class="erro">{{ erro }}</div>
+      <div *ngIf="sucesso" class="sucesso">{{ sucesso }}</div>
+      <div class="toggle-link">
+        <span>
+          {{ registrando ? 'Já tem conta?' : 'Não tem conta?' }}
+        </span>
+        <a href="#" (click)="toggleRegistrar($event)">
+          <span class="register-box">
+            {{ registrando ? 'Faça login' : 'Registre-se' }}
+          </span>
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

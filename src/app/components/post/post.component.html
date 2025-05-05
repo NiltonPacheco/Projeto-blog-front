@@ -1,0 +1,154 @@
+<div class="postagens-container">
+  <header class="top-bar">
+    <span class="logo">BlogPessoal</span>
+    <div class="center-actions">
+      <button
+        *ngIf="usuarioLogadoTipo === 'ROLE_ADMIN'"
+        class="btn-criar-tema"
+        (click)="abrirCriarTema()"
+        [disabled]="mostrarCriarPostagem || mostrarEditarPostagem || mostrarCriarTema"
+      >
+        Criar Tema
+      </button>
+      <button
+        class="btn-criar-postagem"
+        (click)="abrirCriarPostagem()"
+        [disabled]="mostrarEditarPostagem"
+      >
+        Criar Postagem
+      </button>
+    </div>
+    <div class="actions">
+      <button class="btn-dashboard" (click)="irParaDashboard()">Dashboard</button>
+      <button class="btn-logout" (click)="logout()">Logout</button>
+    </div>
+  </header>
+
+  <div *ngIf="mensagem" class="mensagem-feedback">
+    {{ mensagem }}
+  </div>
+
+  <div *ngIf="mostrarCriarTema" class="criar-tema-card">
+    <form (ngSubmit)="criarTema()" #formCriarTema="ngForm">
+      <h3>Criar novo tema</h3>
+      <input
+        name="descricao"
+        [(ngModel)]="novoTema.descricao"
+        placeholder="Descrição do tema"
+        class="input"
+        required
+      />
+      <div class="form-actions">
+        <button type="submit" class="btn-criar-tema">Salvar Tema</button>
+        <button type="button" class="btn-cancelar" (click)="cancelarCriarTema()">Cancelar</button>
+      </div>
+      <div *ngIf="erroCriarTema" class="erro-tema">
+        {{ mensagemTema }}
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="mostrarCriarPostagem" class="criar-postagem-card">
+    <form (ngSubmit)="criarPostagem()" #formCriar="ngForm">
+      <h3>Criar nova postagem</h3>
+      <select
+        name="tema"
+        [(ngModel)]="novaPostagem.tema"
+        class="input"
+      >
+        <option value="" disabled [selected]="!novaPostagem.tema">Selecione um tema</option>
+        <option *ngFor="let tema of temas" [ngValue]="tema">{{ tema.descricao }}</option>
+      </select>
+
+      <input
+        name="titulo"
+        [(ngModel)]="novaPostagem.titulo"
+        placeholder="Título da postagem"
+        class="input"
+      />
+
+      <textarea
+        name="texto"
+        [(ngModel)]="novaPostagem.texto"
+        placeholder="Descrição da postagem"
+        class="input"
+        rows="4"
+      ></textarea>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-criar-postagem">Publicar</button>
+        <button type="button" class="btn-cancelar" (click)="mostrarCriarPostagem = false">Cancelar</button>
+      </div>
+      <div *ngIf="erroCriar" class="erro-tema">
+        Preencha todos os campos e selecione um tema.
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="mostrarEditarPostagem" class="criar-postagem-card">
+    <form (ngSubmit)="salvarEdicao()" #formEditar="ngForm">
+      <h3>Editar postagem</h3>
+      <select
+        name="tema"
+        [(ngModel)]="postagemEditando.tema"
+        class="input"
+      >
+        <option value="" disabled [selected]="!postagemEditando.tema">Selecione um tema</option>
+        <option *ngFor="let tema of temas" [ngValue]="tema">{{ tema.descricao }}</option>
+      </select>
+
+      <input
+        name="titulo"
+        [(ngModel)]="postagemEditando.titulo"
+        placeholder="Título da postagem"
+        class="input"
+        [disabled]="soPodeEditarTema()"
+      />
+
+      <textarea
+        name="texto"
+        [(ngModel)]="postagemEditando.texto"
+        placeholder="Descrição da postagem"
+        class="input"
+        rows="4"
+        [disabled]="soPodeEditarTema()"
+      ></textarea>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-salvar">Salvar</button>
+        <button type="button" class="btn-cancelar" (click)="cancelarEdicao()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="search-bar">
+    <span class="search-icon"></span>
+    <input
+      type="text"
+      placeholder="Filtro por autor, título, texto ou data"
+      [(ngModel)]="filtro"
+      (input)="filtrarPostagens()"
+    />
+  </div>
+
+  <div class="post-list">
+    <div class="post-card" *ngFor="let post of postagensFiltradas">
+      <div class="post-meta">
+        <span class="post-date">{{ post.data | date:'dd/MM/yyyy HH:mm' }}</span>
+        <span class="dot">•</span>
+        <span class="post-author">
+          {{ post.usuario?.nome || post.usuario?.usuario }}
+        </span>
+      </div>
+      <div class="post-tema">
+        {{ post.tema?.descricao || 'Sem tema' }}
+      </div>
+      <div class="post-title">{{ post.titulo }}</div>
+      <div class="post-content">{{ post.texto }}</div>
+      <div class="post-actions">
+        <a *ngIf="podeEditar(post)" (click)="editarPost(post)" class="btn-editar">Editar</a>
+        <a *ngIf="podeExcluir(post)" (click)="excluirPost(post)" class="btn-excluir">Excluir</a>
+      </div>
+    </div>
+  </div>
+</div>
