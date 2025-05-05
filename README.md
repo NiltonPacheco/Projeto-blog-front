@@ -1,42 +1,48 @@
-# Blog Pessoal
+# 📝 Blog Pessoal - Frontend Angular
 
-Este é um projeto de Blog Pessoal desenvolvido como parte do curso de desenvolvimento web full stack. O sistema permite criar, editar, listar e excluir postagens, além de gerenciar temas e usuários com autenticação e autorização.
+Aplicação web desenvolvida com Angular para gerenciamento de um blog pessoal, incluindo dashboard analítico. Este projeto foi realizado como parte do **programa Acelera Maker** da Montreal, integrando conceitos de UX Design, Desenvolvimento Web, Integração com API REST e boas práticas com Angular Material.
 
-## Tecnologias Utilizadas
+## 🎯 Objetivo
 
-- **Frontend:** Angular
-- **Backend:** Spring Boot (Java)
-- **Banco de Dados:** MySQL
-- **Hospedagem:** Fly.io (backend)
+Permitir o gerenciamento completo de postagens (CRUD), além de oferecer um dashboard analítico com gráficos e dados relevantes, como número total de postagens e distribuição por autor.
 
-## Funcionalidades
+## ✨ Funcionalidades
 
-- Cadastro e login de usuários
-- Criação, edição e exclusão de postagens
-- Filtro de postagens por autor, título, texto, data e tema
-- Criação e gerenciamento de temas (apenas para admin)
-- Autenticação JWT
-- Responsivo e fácil de usar
+- ✅ CRUD completo de postagens (criar, visualizar, editar e excluir)
+- 🧑‍💻 Cada post contém: título, tema, conteúdo, autor e data
+- 📊 Dashboard com:
+  - Número total de postagens
+  - Gráfico de postagens por autor
+  - Lista das últimas postagens cadastradas
+- 🔍 Filtro de postagens por autor, tema e/ou data
+- 📡 Integração com API REST
+- 🎨 Interface responsiva com Angular Material
+- 🌐 Boas práticas de UX Design e organização de código
 
-## Como rodar o projeto
+## 🛠️ Tecnologias e Ferramentas
 
-### Backend
+- Angular 16+
+- Angular Material
+- Chart.js
+- SCSS
+- Integração com Backend (Spring Boot REST API)
 
-1. Clone o repositório do backend
-2. Configure o banco de dados no `application.properties`
-3. Execute o projeto com `mvn spring-boot:run`
+## 🚀 Deploy
 
-### Frontend
+- 🔗 **Backend (Spring Boot):** [https://projeto-blog-ad0bja.fly.dev/](https://projeto-blog-ad0bja.fly.dev/)
+- 🔗 **Frontend (Angular):** (adicione o link quando publicar)
 
-1. Clone este repositório
-2. Instale as dependências com `npm install`
-3. Execute com `ng serve`
-4. Acesse em `http://localhost:4200`
+## 🎓 Desenvolvido no Programa Acelera Maker
 
-## Demonstração
+Este projeto foi desenvolvido como parte do **programa Acelera Maker** da Montreal, com o objetivo de capacitar alunos para o mercado de tecnologia por meio de desafios reais e práticas modernas de desenvolvimento.
 
-![Demonstração do Blog](caminho/para/sua/imagem.png)
+## 🙌 Contribuições e Aprendizados
 
-## Autor
+- Experiência prática com Angular 16 e Angular Material
+- Desenvolvimento orientado ao usuário com foco em usabilidade
+- Resolução de problemas de integração com backend e gráficos
 
-- [Seu Nome](https://github.com/seuusuario)
+---
+
+**Autor:**  
+Nilton Guilherme Pacheco dos Santos
