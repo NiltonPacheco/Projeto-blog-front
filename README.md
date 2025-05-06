@@ -30,7 +30,7 @@ Permitir o gerenciamento completo de postagens (CRUD), além de oferecer um dash
 ## 🚀 Deploy
 
 - 🔗 **Backend (Spring Boot):** [https://projeto-blog-ad0bja.fly.dev/](https://projeto-blog-ad0bja.fly.dev/)
-- 🔗 **Frontend (Angular):** (adicione o link quando publicar)
+- 🔗 **Frontend (Angular):** (https://projeto-blog-front-six.vercel.app/)
 
 ## 🎓 Desenvolvido no Programa Acelera Maker
 
