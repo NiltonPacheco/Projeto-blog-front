@@ -6,14 +6,14 @@
         *ngIf="usuarioLogadoTipo === 'ROLE_ADMIN'"
         class="btn-criar-tema"
         (click)="abrirCriarTema()"
-        [disabled]="mostrarCriarPostagem || mostrarEditarPostagem || mostrarCriarTema"
+        [disabled]="mostrarCriarPostagem || mostrarEditarPostagem || mostrarCriarTema || mostrarVisualizarPostagem"
       >
         Criar Tema
       </button>
       <button
         class="btn-criar-postagem"
         (click)="abrirCriarPostagem()"
-        [disabled]="mostrarEditarPostagem"
+        [disabled]="mostrarEditarPostagem || mostrarVisualizarPostagem || mostrarCriarTema"
       >
         Criar Postagem
       </button>
@@ -121,20 +121,37 @@
     </form>
   </div>
 
-  <div class="search-bar">
-    <span class="search-icon"></span>
-    <input
-      type="text"
-      placeholder="Filtro por autor, título, texto ou data"
-      [(ngModel)]="filtro"
-      (input)="filtrarPostagens()"
-    />
+  <div class="filter-sort-container">
+      <div class="search-bar">
+        <span class="search-icon"></span>
+        <input
+          type="text"
+          placeholder="Filtro por autor, título, texto ou data"
+          [(ngModel)]="filtro"
+          (input)="filtrarPostagens()"
+        />
+      </div>
+
+      <div class="sort-controls">
+          <label for="sortCriteria">Ordenar por:</label>
+          <select id="sortCriteria" [(ngModel)]="sortCriteria" (change)="onSortChange()">
+              <option value="data_desc">Data (mais recente)</option>
+              <option value="data_asc">Data (mais antiga)</option>
+              <option value="titulo_asc">Título (A-Z)</option>
+              <option value="titulo_desc">Título (Z-A)</option>
+              <option value="usuario.usuario_asc">Autor (Usuário - A-Z)</option>
+               <option value="usuario.usuario_desc">Autor (Usuário - Z-A)</option>
+              <option value="tema.descricao_asc">Tema (A-Z)</option>
+               <option value="tema.descricao_desc">Tema (Z-A)</option>
+          </select>
+          </div>
   </div>
 
+
   <div class="post-list">
-    <div class="post-card" *ngFor="let post of postagensFiltradas">
+    <div class="post-card" *ngFor="let post of paginatedPostagens">
       <div class="post-meta">
-        <img [src]= "post.usuario?.foto ||  'assets/usuario_padrao.png'" alt="Foto do autor" class="autor-foto"/>
+        <img [src]="post.usuario?.foto || 'assets/usuario_padrao.png'" alt="Foto do autor" class="autor-foto"/>
         <span class="post-date">{{ post.data | date:'dd/MM/yyyy HH:mm' }}</span>
         <span class="dot">•</span>
         <span class="post-author"> {{ post.usuario?.nome || post.usuario?.usuario }}</span>
@@ -144,11 +161,39 @@
         {{ post.tema?.descricao || 'Sem tema' }}
       </div>
       <div class="post-title">{{ post.titulo }}</div>
-      <div class="post-content">{{ post.texto }}</div>
+      <div class="post-content-snippet">
+          {{ post.texto | slice:0:300 }}{{ post.texto?.length > 300 ? '...' : '' }}
+      </div>
       <div class="post-actions">
+        <a (click)="visualizarPost(post)" class="btn-visualizar">Visualizar</a>
         <a *ngIf="podeEditar(post)" (click)="editarPost(post)" class="btn-editar">Editar</a>
         <a *ngIf="podeExcluir(post)" (click)="excluirPost(post)" class="btn-excluir">Excluir</a>
       </div>
     </div>
   </div>
+
+  <div class="pagination-controls" *ngIf="totalPages > 1">
+      <button (click)="previousPage()" [disabled]="currentPage === 1">Anterior</button>
+      <span>Página {{ currentPage }} de {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Próxima</button>
+  </div>
+
+
+  <div *ngIf="mostrarVisualizarPostagem" class="visualizar-postagem-overlay">
+    <div class="visualizar-postagem-card">
+      <button class="btn-fechar" (click)="fecharVisualizarPostagem()">X</button>
+      <div class="post-meta">
+        <img [src]="postagemVisualizando?.usuario?.foto || 'assets/usuario_padrao.png'" alt="Foto do autor" class="autor-foto"/>
+        <span class="post-date">{{ postagemVisualizando?.data | date:'dd/MM/yyyy HH:mm' }}</span>
+        <span class="dot">•</span>
+        <span class="post-author"> {{ postagemVisualizando?.usuario?.nome || postagemVisualizando?.usuario?.usuario }}</span>
+      </div>
+      <div class="post-tema">
+        {{ postagemVisualizando?.tema?.descricao || 'Sem tema' }}
+      </div>
+      <div class="post-title">{{ postagemVisualizando?.titulo }}</div>
+      <div class="post-content">{{ postagemVisualizando?.texto }}</div>
+    </div>
+  </div>
+
 </div>
