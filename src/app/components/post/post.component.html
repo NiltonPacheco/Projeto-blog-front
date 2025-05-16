@@ -134,12 +134,12 @@
   <div class="post-list">
     <div class="post-card" *ngFor="let post of postagensFiltradas">
       <div class="post-meta">
+        <img [src]= "post.usuario?.foto ||  'assets/usuario_padrao.png'" alt="Foto do autor" class="autor-foto"/>
         <span class="post-date">{{ post.data | date:'dd/MM/yyyy HH:mm' }}</span>
         <span class="dot">•</span>
-        <span class="post-author">
-          {{ post.usuario?.nome || post.usuario?.usuario }}
-        </span>
+        <span class="post-author"> {{ post.usuario?.nome || post.usuario?.usuario }}</span>
       </div>
+
       <div class="post-tema">
         {{ post.tema?.descricao || 'Sem tema' }}
       </div>
