@@ -7,18 +7,28 @@
         class="btn-criar-tema"
         (click)="abrirCriarTema()"
         [disabled]="mostrarCriarPostagem || mostrarEditarPostagem || mostrarCriarTema || mostrarVisualizarPostagem"
+        [disabled]="mostrarCriarPostagem || mostrarEditarPostagem || mostrarCriarTema || mostrarVisualizarPostagem"
       >
+        <i class="fas fa-plus"></i> Criar Tema
         <i class="fas fa-plus"></i> Criar Tema
       </button>
       <button
         class="btn-criar-postagem"
         (click)="abrirCriarPostagem()"
         [disabled]="mostrarEditarPostagem || mostrarVisualizarPostagem || mostrarCriarTema"
+        [disabled]="mostrarEditarPostagem || mostrarVisualizarPostagem || mostrarCriarTema"
       >
+        <i class="fas fa-pencil-alt"></i> Criar Postagem
         <i class="fas fa-pencil-alt"></i> Criar Postagem
       </button>
     </div>
     <div class="actions">
+      <button class="btn-dashboard" (click)="irParaDashboard()">
+        <i class="fas fa-tachometer-alt"></i> Dashboard
+      </button>
+      <button class="btn-logout" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
       <button class="btn-dashboard" (click)="irParaDashboard()">
         <i class="fas fa-tachometer-alt"></i> Dashboard
       </button>
@@ -125,6 +135,30 @@
     </form>
   </div>
 
+  <div class="filter-sort-container">
+    <div class="search-bar">
+      <span class="search-icon"></span>
+      <input
+        type="text"
+        placeholder="Filtro por autor, título, texto ou data"
+        [(ngModel)]="filtro"
+        (input)="filtrarPostagens()"
+      />
+    </div>
+
+    <div class="sort-controls">
+      <label for="sortCriteria">Ordenar por:</label>
+      <select id="sortCriteria" [(ngModel)]="sortCriteria" (change)="onSortChange()">
+        <option value="data_desc">Data (mais recente)</option>
+        <option value="data_asc">Data (mais antiga)</option>
+        <option value="titulo_asc">Título (A-Z)</option>
+        <option value="titulo_desc">Título (Z-A)</option>
+        <option value="usuario.usuario_asc">Autor (Usuário - A-Z)</option>
+        <option value="usuario.usuario_desc">Autor (Usuário - Z-A)</option>
+        <option value="tema.descricao_asc">Tema (A-Z)</option>
+        <option value="tema.descricao_desc">Tema (Z-A)</option>
+      </select>
+    </div>
   <div class="filter-sort-container">
     <div class="search-bar">
       <span class="search-icon"></span>
