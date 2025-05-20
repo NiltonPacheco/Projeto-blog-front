@@ -179,7 +179,7 @@ export class PostComponent implements OnInit {
     }
   }
 
-  // Vai para uma página específica (não usado no HTML atual, mas útil)
+  // Vai para uma página específica 
   goToPage(page: number) {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
@@ -255,12 +255,7 @@ export class PostComponent implements OnInit {
   }
 
   soPodeEditarTema(): boolean {
-     // Lógica mantida, mas pode ser simplificada se Autor (Nome) foi removido
-     // return this.usuarioLogadoTipo === 'ROLE_ADMIN' && this.postagemEditando && this.postagemEditando.usuario.id !== this.usuarioLogadoId;
-     // Se apenas o autor OU admin podem editar Título/Texto, e ADMIN pode mudar o tema de qualquer um:
-     // A lógica atual no HTML [disabled]="soPodeEditarTema()" desabilita o Título/Texto SE FOR ADMIN E NÃO FOR O AUTOR.
-     // Isso parece correto para permitir que o admin altere apenas o tema de posts que não são dele.
-     // Mantendo a lógica como está.
+   
      return this.usuarioLogadoTipo === 'ROLE_ADMIN' && this.postagemEditando && this.postagemEditando.usuario.id !== this.usuarioLogadoId;
   }
 
@@ -339,7 +334,7 @@ export class PostComponent implements OnInit {
     }
   }
 
-  // Criar tema (Modificado para fechar outros modais ao abrir)
+  // Criar tema 
   abrirCriarTema() {
     this.fecharTodosModais();
     this.mostrarCriarTema = true;
