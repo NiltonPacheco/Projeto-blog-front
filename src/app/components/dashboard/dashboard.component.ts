@@ -141,8 +141,7 @@ export class DashboardComponent implements OnInit {
   }
 
   logout(): void {
-    // Se você tiver um AuthService, chame o método de logout aqui
-    // this.authService.logout();
+ 
     this.router.navigate(['/login']);
   }
 }
