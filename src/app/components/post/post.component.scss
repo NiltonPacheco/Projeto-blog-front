@@ -7,13 +7,12 @@ html, body {
   background: #1a1625;
 }
 
-/* HEADER FIXO */
 .top-bar {
   width: 100vw;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100; /* Z-index para o header */
+  z-index: 100;
   display: flex;
   align-items: center;
   background: #241c36;
@@ -50,18 +49,9 @@ html, body {
   gap: 12px;
 }
 
-.btn-dashboard {
-  font-size: 1rem;
-  color: #f0ffffde;
-  cursor: pointer;
-  text-decoration: underline;
-  margin-right: 12px;
-}
-
-/* BOTÃO CRIAR POSTAGEM */
-.btn-criar-postagem {
-  background: #00ff88;
-  color: #2b134b;
+.btn-criar-postagem,
+.btn-criar-tema,
+.btn-salvar {
   border: none;
   padding: 12px 32px;
   border-radius: 12px;
@@ -69,35 +59,29 @@ html, body {
   font-weight: 900;
   letter-spacing: 2px;
   cursor: pointer;
-  box-shadow: 0px 10px 40px -12px #00ff8052;
   transition: filter 0.2s;
   margin: 0;
 }
 
-.btn-criar-postagem:disabled {
+.btn-criar-postagem:disabled,
+.btn-criar-tema:disabled,
+.btn-salvar:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-/* BOTÃO CRIAR TEMA */
+.btn-criar-postagem,
+.btn-salvar {
+  background: #00ff88;
+  color: #2b134b;
+  box-shadow: 0px 10px 40px -12px #00ff8052;
+}
+
 .btn-criar-tema {
   background: #00bfff;
   color: #2b134b;
-  border: none;
-  padding: 12px 32px;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 900;
-  letter-spacing: 2px;
-  cursor: pointer;
   box-shadow: 0px 10px 40px -12px #00bfff52;
-  transition: filter 0.2s;
   margin: 0 8px 0 0;
-}
-
-.btn-criar-tema:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 
 .btn-dashboard {
@@ -117,7 +101,8 @@ html, body {
   margin-right: 12px;
 }
 
-.btn-dashboard:hover, .btn-dashboard:focus {
+.btn-dashboard:hover,
+.btn-dashboard:focus {
   background: #00cc6a;
   color: #fff;
   filter: brightness(0.95);
@@ -125,7 +110,6 @@ html, body {
   text-decoration: none;
 }
 
-/* Espaço para o header fixo */
 .postagens-container {
   width: 100%;
   margin: 96px 0 32px 0;
@@ -137,19 +121,17 @@ html, body {
   align-items: center;
 }
 
-/* --- Seção de Filtro e Classificação --- */
 .filter-sort-container {
   width: 100%;
-  max-width: 600px; /* Mantém a largura do search-bar */
+  max-width: 600px;
   margin: 24px auto 16px auto;
   padding: 0;
   display: flex;
-  flex-direction: column; /* Empilha em colunas */
+  flex-direction: column;
   align-items: center;
-  gap: 15px; /* Espaço entre o filtro e os controles de classificação */
+  gap: 15px;
 }
 
-/* BARRA DE PESQUISA */
 .search-bar {
   width: 100%;
   display: flex;
@@ -166,8 +148,10 @@ html, body {
   margin-right: 8px;
 }
 
-.search-bar input[type="text"] {
-  flex: 1;
+/* INPUTS E SELECTS: ESTILOS PADRÃO */
+.search-bar input[type="text"],
+.sort-controls select {
+  flex: 1; /* Apenas para search-bar input */
   padding: 15px;
   border: 2px solid #000;
   border-radius: 10px;
@@ -178,6 +162,9 @@ html, body {
   outline: none;
   box-sizing: border-box;
   font-weight: 500;
+}
+
+.search-bar input[type="text"] {
   max-width: 350px;
 }
 
@@ -200,41 +187,29 @@ html, body {
   filter: brightness(0.95);
 }
 
-/* Controles de Classificação */
 .sort-controls {
   display: flex;
   align-items: center;
-  gap: 10px; /* Espaço entre o label e o select */
-  color: #fff; /* Cor do texto para o label */
+  gap: 10px;
+  color: #fff;
   font-size: 1em;
   font-weight: 500;
 }
 
 .sort-controls label {
-  white-space: nowrap; /* Evita quebra de linha no label "Ordenar por:" */
+  white-space: nowrap;
 }
 
-/* Estilos ATUALIZADOS para o select de ordenação */
 .sort-controls select {
-  width: auto; /* Ajusta a largura automaticamente com base no conteúdo */
-  padding: 15px; /* Padding igual aos inputs */
-  border: 2px solid #000; /* Borda igual aos inputs */
-  border-radius: 10px; /* Borda arredondada igual aos inputs */
-  background: #23203a; /* Fundo escuro */
-  color: #fff; /* Texto branco */
-  font-size: 1em; /* Tamanho da fonte */
-  box-shadow: 0px 10px 40px #00000020; /* Sombra igual aos inputs */
-  outline: none; /* Remove o contorno padrão ao focar */
-  cursor: pointer; /* Indica que é clicável */
-  box-sizing: border-box; /* Inclui padding e borda no tamanho total */
+  width: auto;
+  cursor: pointer;
 }
 
 .sort-controls select:focus {
-  border-color: #00ff88; /* Destaca ao focar */
-  box-shadow: 0 0 8px rgba(0, 255, 136, 0.7); /* Ajuste a sombra ao focar */
+  border-color: #00ff88;
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.7);
 }
 
-/* LISTA DE POSTS */
 .post-list {
   width: 100%;
   max-width: 600px;
@@ -252,37 +227,43 @@ html, body {
   box-shadow: 0px 10px 40px #00000056;
   margin-bottom: 18px;
   padding: 22px 28px;
-  box-sizing: border-box; /* Garantir que padding e borda não causem overflow */
+  box-sizing: border-box;
 }
 
-.post-card .post-meta {
+.post-card .post-meta,
+.visualizar-postagem-card .post-meta {
   font-size: 1.15rem;
   color: #fff;
   font-weight: 700;
   margin-bottom: 10px;
   letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
 }
 
-.post-card .dot {
+.post-card .dot,
+.visualizar-postagem-card .dot {
   margin: 0 6px;
 }
 
-/* TEMA DA POSTAGEM */
-.post-card .post-tema {
+.post-card .post-tema,
+.visualizar-postagem-card .post-tema {
   display: inline-block;
   background: #00ff88;
   color: #2b134b;
   font-weight: bold;
-  font-size: 1.2em;
   border-radius: 8px;
-  padding: 6px 12px;
-  margin-bottom: 8px;
-  margin-top: 2px;
   box-shadow: 0 2px 8px #00ff8052;
   border: 2px solid #2b134b;
 }
 
-/* TÍTULO E CONTEÚDO DOS CARDS */
+.post-card .post-tema {
+  font-size: 1.2em;
+  padding: 6px 12px;
+  margin-bottom: 8px;
+  margin-top: 2px;
+}
+
 .post-card .post-title {
   font-size: 1.2rem;
   font-weight: bold;
@@ -293,8 +274,8 @@ html, body {
   margin-bottom: 6px;
   letter-spacing: 1px;
   border: 2px solid #2b134b;
-  background: #fff; /* Reutilizado */
-  color: #111; /* Reutilizado */
+  background: #fff;
+  color: #111;
 }
 
 .post-card .post-content-snippet {
@@ -303,61 +284,63 @@ html, body {
   padding: 10px 14px;
   margin-bottom: 8px;
   box-shadow: 0 2px 8px #00000040;
-  font-weight: 700; /* Reutiliza alguns estilos do post-content original */
-  background: #fff; /* Reutilizado */
-  color: #111; /* Reutilizado */
-  border: 2px solid #000; /* Reutilizado */
-  word-wrap: break-word; /* Alias mais antigo */
-  overflow-wrap: break-word; /* Propriedade moderna */
-  word-break: break-all; /* Quebra a palavra em qualquer ponto se necessário */
-  white-space: normal;
-  overflow-x: hidden; /* Garante que não tenha scroll horizontal */
-  box-sizing: border-box; /* Inclui padding e borda no tamanho total */
-}
-
-/* O estilo .post-card .post-content original agora é usado SOMENTE no modal de visualização */
-.post-card .post-content {
-  display: none; /* Oculta na lista principal */
-}
-
-.btn-editar, .btn-excluir {
-  color: #00ff88;
-  cursor: pointer;
-  text-decoration: underline;
   font-weight: 700;
-  font-size: 1em;
-  background: none;
-  border: none;
-  padding: 0;
-  margin-right: 16px;
-  transition: color 0.2s;
+  background: #fff;
+  color: #111;
+  border: 2px solid #000;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
+.post-card .post-content {
+  display: none;
+}
+
+.btn-editar,
+.btn-visualizar,
 .btn-excluir {
-  color: #e53935;
+  padding: 3px 20px;
+  margin-right: 8px;
+  border-radius: 10px;
+  font-weight: 650;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0px 4px 16px -6px #00000040;
 }
 
-.btn-editar:hover, .btn-excluir:hover {
+.btn-editar {
+  background-color: #ffa500;
+  color: #2b134b;
+}
+
+.btn-editar:hover {
+  background-color: #e69500;
   color: #fff;
-  text-shadow: 0 2px 8px #00ff8860;
 }
 
 .btn-visualizar {
-  color: #00bfff;
-  cursor: pointer;
-  text-decoration: underline;
-  font-weight: 700;
-  font-size: 1em;
-  background: none;
-  border: none;
-  padding: 0;
-  margin-right: 16px;
-  transition: color 0.2s;
+  background-color: #00bfff;
+  color: #2b134b;
 }
 
 .btn-visualizar:hover {
+  background-color: #009acc;
   color: #fff;
-  text-shadow: 0 2px 8px #00bfff60;
+}
+
+.btn-excluir {
+  background-color: #ff4c4c;
+  color: #2b134b;
+}
+
+.btn-excluir:hover {
+  background-color: #d43f3f;
+  color: #fff;
 }
 
 .mensagem-feedback {
@@ -373,7 +356,8 @@ html, body {
   font-size: 1.1em;
 }
 
-.criar-postagem-card, .criar-tema-card {
+.criar-postagem-card,
+.criar-tema-card {
   background: #31294b;
   border-radius: 20px;
   margin: 32px auto 24px auto;
@@ -387,7 +371,8 @@ html, body {
   position: relative;
 }
 
-.criar-postagem-card h3, .criar-tema-card h3 {
+.criar-postagem-card h3,
+.criar-tema-card h3 {
   margin-bottom: 18px;
   color: #fff;
   font-size: 1.3rem;
@@ -395,7 +380,11 @@ html, body {
   text-shadow: 0 2px 8px #00000060;
 }
 
-.criar-postagem-card .input, .criar-postagem-card select, .criar-postagem-card textarea, .criar-tema-card .input {
+/* ESTILOS ESPECÍFICOS PARA OS CAMPOS DE INPUT/SELECT/TEXTAREA DENTRO DOS CARDS DE CRIAR/EDITAR */
+.criar-postagem-card .input,
+.criar-postagem-card select,
+.criar-postagem-card textarea,
+.criar-tema-card .input {
   width: 100%;
   margin-bottom: 16px;
   padding: 15px;
@@ -411,32 +400,17 @@ html, body {
   font-weight: 500;
 }
 
-.criar-postagem-card .input::placeholder, .criar-postagem-card textarea::placeholder, .criar-tema-card .input::placeholder {
+.criar-postagem-card .input::placeholder,
+.criar-postagem-card textarea::placeholder,
+.criar-tema-card .input::placeholder {
   color: #bdb6d6;
 }
 
-.criar-postagem-card .form-actions, .criar-tema-card .form-actions {
+.criar-postagem-card .form-actions,
+.criar-tema-card .form-actions {
   display: flex;
   gap: 14px;
   margin-top: 8px;
-}
-
-.btn-salvar, .criar-tema-card .btn-criar-tema {
-  background: #00ff88;
-  color: #2b134b;
-  border: none;
-  padding: 12px 32px;
-  border-radius: 12px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  cursor: pointer;
-  box-shadow: 0px 10px 40px -12px #00ff8052;
-  transition: filter 0.2s;
-}
-
-.btn-salvar:disabled, .criar-tema-card .btn-criar-tema:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 
 .btn-cancelar {
@@ -454,7 +428,8 @@ html, body {
   filter: brightness(0.9);
 }
 
-.criar-postagem-card .erro-tema, .criar-tema-card .erro-tema {
+.criar-postagem-card .erro-tema,
+.criar-tema-card .erro-tema {
   color: #e53935;
   background: #ffebee11;
   border-radius: 8px;
@@ -465,7 +440,8 @@ html, body {
   width: 100%;
 }
 
-.autor-foto {
+.autor-foto,
+.visualizar-postagem-card .autor-foto {
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -473,7 +449,6 @@ html, body {
   margin-right: 8px;
 }
 
-/* --- Estilos para a Visualização de Postagem (Modal) --- */
 .visualizar-postagem-overlay {
   position: fixed;
   top: 0;
@@ -500,7 +475,7 @@ html, body {
   max-height: 90vh;
   overflow-y: auto;
   border: 2px solid #00ff88;
-  box-sizing: border-box; /* Garantir que padding e borda não causem overflow */
+  box-sizing: border-box;
 }
 
 .visualizar-postagem-card .btn-fechar {
@@ -521,8 +496,6 @@ html, body {
 }
 
 .visualizar-postagem-card .post-meta {
-  display: flex;
-  align-items: center;
   margin-bottom: 15px;
   font-size: 1.1em;
   color: #bbb;
@@ -531,13 +504,12 @@ html, body {
 .visualizar-postagem-card .autor-foto {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
   margin-right: 10px;
-  object-fit: cover;
   border: 2px solid #00ff88;
 }
 
-.visualizar-postagem-card .post-date, .visualizar-postagem-card .post-author {
+.visualizar-postagem-card .post-date,
+.visualizar-postagem-card .post-author {
   font-size: 1em;
   color: #bbb;
 }
@@ -548,17 +520,10 @@ html, body {
 }
 
 .visualizar-postagem-card .post-tema {
-  display: inline-block;
-  background: #00ff88;
-  color: #2b134b;
-  font-weight: bold;
   font-size: 1.3em;
-  border-radius: 8px;
   padding: 8px 14px;
   margin-bottom: 12px;
   margin-top: 4px;
-  box-shadow: 0 2px 8px #00ff8052;
-  border: 2px solid #2b134b;
 }
 
 .visualizar-postagem-card .post-title {
@@ -569,7 +534,6 @@ html, body {
   text-shadow: 0 2px 8px #00ff8840;
 }
 
-/* Conteúdo completo no modal */
 .visualizar-postagem-card .post-content {
   font-size: 1.1em;
   line-height: 1.8;
@@ -583,15 +547,14 @@ html, body {
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: pre-wrap;
-  box-sizing: border-box; /* Inclui padding (se houver) e borda no tamanho total */
+  box-sizing: border-box;
 }
 
-/* Estilos para os Controles de Paginação */
 .pagination-controls {
   margin-top: 20px;
   display: flex;
   align-items: center;
-  gap: 15px; /* Espaço entre os elementos de paginação */
+  gap: 15px;
   color: #fff;
   font-size: 1.1em;
   font-weight: 600;
@@ -601,7 +564,7 @@ html, body {
   padding: 10px 15px;
   border: none;
   border-radius: 8px;
-  background: #00bfff; /* Cor similar ao botão de criar tema */
+  background: #00bfff;
   color: #2b134b;
   font-weight: bold;
   cursor: pointer;
@@ -617,12 +580,11 @@ html, body {
   background: #0099cc;
 }
 
-/* Estilo opcional para botões de página específicos */
 .pagination-controls button.active {
-  background: #00ff88; /* Cor destacada para a página atual */
+  background: #00ff88;
   color: #2b134b;
 }
-  /* BOTÃO LOGOUT */
+
 .btn-logout {
   background: #e53935;
   color: #fff;
@@ -644,7 +606,6 @@ html, body {
   filter: brightness(0.9);
 }
 
-/* RESPONSIVO */
 @media (max-width: 800px) {
   .top-bar {
     padding: 0 8px;
@@ -653,14 +614,17 @@ html, body {
     gap: 8px;
   }
 
-  .top-bar .logo, .top-bar .center-actions, .top-bar .actions {
+  .top-bar .logo,
+  .top-bar .center-actions,
+  .top-bar .actions {
     flex: unset;
     width: 100%;
     justify-content: center;
     text-align: center;
   }
 
-  .btn-criar-postagem, .btn-criar-tema {
+  .btn-criar-postagem,
+  .btn-criar-tema {
     width: 100%;
     max-width: 250px;
     font-size: 1rem;
@@ -668,8 +632,6 @@ html, body {
     margin: 8px 0;
   }
 
-
-// ... outros estilos ...
   .post-card {
     width: 100%;
     min-width: unset;
@@ -680,7 +642,8 @@ html, body {
     padding-left: 8px;
   }
 
-  .search-bar, .post-list {
+  .search-bar,
+  .post-list {
     max-width: 100%;
   }
 
@@ -688,7 +651,6 @@ html, body {
     max-width: 100%;
   }
 
-  /* Parte da visualização do post */
   .visualizar-postagem-card {
     padding: 20px;
   }
@@ -716,20 +678,19 @@ html, body {
     height: 35px;
   }
 
-  /* Estilos responsivos para Filtro e Classificação */
   .filter-sort-container {
     margin-top: 16px;
     gap: 10px;
   }
 
   .sort-controls {
-    flex-direction: column; /* Empilha os selects em telas pequenas */
+    flex-direction: column;
     align-items: flex-start;
     gap: 8px;
   }
 
   .sort-controls select {
-    width: 100%; /* Ocupa a largura total em telas pequenas */
-    max-width: 250px; /* Limite para não ficar muito largo */
+    width: 100%;
+    max-width: 250px;
   }
 }
