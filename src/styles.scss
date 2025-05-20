@@ -1,4 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { 
+  height: 100%; /* Garante que ocupem a altura total da viewport */
+  margin: 0; /* Remove margens padrão */
+  padding: 0; /* Remove paddings padrão */
+  
+  font-family: 'Nunito', 'Noto Sans', Arial, sans-serif; /* Use Nunito como fonte global */
+  overflow-x: hidden; /* Evita scroll horizontal */
+  background-image: url('/assets/1.png'); /* Caminho verificado na Network */
+  background-size: cover; /* Cobre toda a área */
+  background-position: center center; /* Centraliza a imagem */
+  background-repeat: no-repeat; /* Evita repetição */
+  background-attachment: fixed; /* Fixa a imagem */
+  background-color: #1a1625; /* Cor de fallback */
+}
