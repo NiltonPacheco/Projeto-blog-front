@@ -1,72 +1,72 @@
-<div class = "main">
-<div class="dashboard-actions">
-  <button mat-stroked-button color="primary" routerLink="/postagens">
-    <mat-icon>arrow_back</mat-icon>
-    Voltar para Postagens
-  </button>
-  <button mat-stroked-button color="warn" (click)="logout()">
-    <mat-icon>logout</mat-icon>
-    Logout
-  </button>
-</div>
+<div class="main">
+  <div class="dashboard-actions">
+    <button class="btn-dashboard" routerLink="/postagens">
+      <mat-icon>arrow_back</mat-icon>
+      Voltar para Postagens
+    </button>
+    <button class="btn-logout" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
+  </div>
 
-<div class="dashboard-grid">
-  <!-- Cards de métricas -->
-  <div class="metric-card metric-posts">
-    <mat-icon>article</mat-icon>
-    <div>
-      <div class="metric-value">{{ totalPostagens }}</div>
-      <div class="metric-label">Postagens</div>
-    </div>
-  </div>
-  <div class="metric-card metric-authors">
-    <mat-icon>group</mat-icon>
-    <div>
-      <div class="metric-value">{{ totalAutores }}</div>
-      <div class="metric-label">Autores</div>
-    </div>
-  </div>
-  <div class="metric-card metric-last">
-    <mat-icon>update</mat-icon>
-    <div>
-      <div class="metric-value">
-        <ng-container *ngIf="ultimasPostagens.length > 0 && ultimasPostagens[0]?.data; else semData">
-          {{ ultimasPostagens[0].data | date:'dd/MM/yyyy' }}
-        </ng-container>
-        <ng-template #semData>-</ng-template>
+  <div class="dashboard-grid">
+    <!-- Cards de métricas -->
+    <div class="metric-card metric-posts">
+      <mat-icon>article</mat-icon>
+      <div>
+        <div class="metric-value">{{ totalPostagens }}</div>
+        <div class="metric-label">Postagens</div>
       </div>
-      <div class="metric-label">Última Postagem</div>
+    </div>
+    <div class="metric-card metric-authors">
+      <mat-icon>group</mat-icon>
+      <div>
+        <div class="metric-value">{{ totalAutores }}</div>
+        <div class="metric-label">Autores</div>
+      </div>
+    </div>
+    <div class="metric-card metric-last">
+      <mat-icon>update</mat-icon>
+      <div>
+        <div class="metric-value">
+          <ng-container *ngIf="ultimasPostagens.length > 0 && ultimasPostagens[0]?.data; else semData">
+            {{ ultimasPostagens[0].data | date:'dd/MM/yyyy' }}
+          </ng-container>
+          <ng-template #semData>-</ng-template>
+        </div>
+        <div class="metric-label">Última Postagem</div>
+      </div>
+    </div>
+
+    <!-- Gráfico de pizza -->
+    <div class="dashboard-chart-card">
+      <h3>Distribuição de Postagens por Autor</h3>
+      <div class="chart-container">
+        <canvas id="postsPieChart" width="600" height="320"></canvas>
+      </div>
+    </div>
+
+    <!-- Gráfico de barras -->
+    <div class="dashboard-chart-card">
+      <h3>Postagens por Autor (Colunas)</h3>
+      <div class="chart-container">
+        <canvas id="postsBarChart" width="600" height="320"></canvas>
+      </div>
+    </div>
+
+    <!-- Lista de postagens recentes -->
+    <div class="dashboard-list-card">
+      <h3>Recentes</h3>
+      <ul>
+        <li *ngFor="let post of ultimasPostagens">
+          <span class="post-title">{{ post.titulo }}</span>
+          <span class="post-meta">
+            por {{ post.usuario?.nome || post.usuario?.usuario || 'Desconhecido' }}
+            em {{ post.data | date:'dd/MM/yyyy' }}
+          </span>
+        </li>
+      </ul>
     </div>
   </div>
-
-  <!-- Gráfico de pizza -->
-  <div class="dashboard-chart-card">
-    <h3>Distribuição de Postagens por Autor</h3>
-    <div class="chart-container">
-      <canvas id="postsPieChart" width="600" height="320"></canvas>
-    </div>
-  </div>
-
-  <!-- Gráfico de barras -->
-  <div class="dashboard-chart-card">
-    <h3>Postagens por Autor (Colunas)</h3>
-    <div class="chart-container">
-      <canvas id="postsBarChart" width="600" height="320"></canvas>
-    </div>
-  </div>
-
-  <!-- Lista de postagens recentes -->
-  <div class="dashboard-list-card">
-    <h3>Recentes</h3>
-    <ul>
-      <li *ngFor="let post of ultimasPostagens">
-        <span class="post-title">{{ post.titulo }}</span>
-        <span class="post-meta">
-          por {{ post.usuario?.nome || post.usuario?.usuario || 'Desconhecido' }}
-          em {{ post.data | date:'dd/MM/yyyy' }}
-        </span>
-      </li>
-    </ul>
-  </div>
-</div>
 </div>
