@@ -1,14 +1,20 @@
 <div class="main">
-  <div class="dashboard-actions">
-    <button class="btn-dashboard" routerLink="/postagens">
-      <mat-icon>arrow_back</mat-icon>
-      Voltar para Postagens
-    </button>
-    <button class="btn-logout" (click)="logout()">
-      <mat-icon>logout</mat-icon>
-      Logout
-    </button>
+  <div class="top-bar">
+    <div class="logo">
+      <span>BlogPessoal</span>
+    </div>
+    <div class="dashboard-actions">
+      <button class="btn-dashboard" routerLink="/postagens">
+        <mat-icon>arrow_back</mat-icon>
+        Voltar para Postagens
+      </button>
+      <button class="btn-logout" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        Logout
+      </button>
+    </div>
   </div>
+  <br>
 
   <div class="dashboard-grid">
     <!-- Cards de métricas -->
@@ -39,23 +45,19 @@
       </div>
     </div>
 
-    <!-- Gráfico de pizza -->
+    <!-- Gráficos e lista de postagens -->
     <div class="dashboard-chart-card">
       <h3>Distribuição de Postagens por Autor</h3>
       <div class="chart-container">
         <canvas id="postsPieChart" width="600" height="320"></canvas>
       </div>
     </div>
-
-    <!-- Gráfico de barras -->
     <div class="dashboard-chart-card">
       <h3>Postagens por Autor (Colunas)</h3>
       <div class="chart-container">
         <canvas id="postsBarChart" width="600" height="320"></canvas>
       </div>
     </div>
-
-    <!-- Lista de postagens recentes -->
     <div class="dashboard-list-card">
       <h3>Recentes</h3>
       <ul>
