@@ -1,7 +1,7 @@
 .main {
   min-height: 100vh;
   background: #23203a !important;
-  padding-top: 64px; /* Adicione isso para evitar que o conteúdo fique atrás da barra */
+  padding-top: 64px;
   padding-bottom: 40px;
 }
 
@@ -36,7 +36,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 16px;
-  align-items: center; /* Alinha os itens verticalmente ao centro */
+  align-items: center; 
 }
 
 .btn-dashboard, .btn-logout {
@@ -49,9 +49,9 @@
   border-radius: 10px; 
   cursor: pointer; 
   transition: background-color 0.3s; 
-  height: 40px; /* Ajuste a altura para alinhar com o logo */
-  display: flex; /* Adiciona flex para centralizar o texto */
-  align-items: center; /* Centraliza o texto verticalmente */
+  height: 40px;
+  display: flex; 
+  align-items: center;
 }
 
 .btn-logout {
@@ -65,7 +65,7 @@
   cursor: pointer;
   transition: filter 0.2s;
   box-shadow: 0px 10px 40px -12px #e5393552;
-  height: 40px; /* Ajuste a altura para alinhar com o logo */
+  height: 40px; 
 }
 
 .btn-logout:hover {
