@@ -1,6 +1,6 @@
 <div class="postagens-container">
   <header class="top-bar">
-   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <span class="logo">BlogPessoal</span>
     <div class="center-actions">
       <button
@@ -82,7 +82,7 @@
         [(ngModel)]="novaPostagem.texto"
         placeholder="Descrição da postagem"
         class="input"
-        rows="4"
+        rows="18"
       ></textarea>
 
       <div class="form-actions">
@@ -120,7 +120,7 @@
         [(ngModel)]="postagemEditando.texto"
         placeholder="Descrição da postagem"
         class="input"
-        rows="4"
+        rows="16"
         [disabled]="soPodeEditarTema()"
       ></textarea>
 
