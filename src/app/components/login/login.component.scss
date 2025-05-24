@@ -1,37 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
   margin: 0;
   font-family: 'Noto Sans';
 }
+
 .main-login {
   width: 100vw;
   height: 100vh;
   background: #201b2c;
   display: flex;
-  justify-content:  center;
+  justify-content: center;
   align-items: center;
 }
+
 .left-login {
   width: 50vw;
-  height:  100vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+
 .left-login > h1 {
-  color: #77ffc0
+  color: #77ffc0;
 }
+
 .left-login-image {
   width: 35vw;
 }
+
 .right-login {
   width: 50vw;
-  height:  100vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .card-login {
   width: 60%;
   display: flex;
@@ -43,11 +50,13 @@ body {
   border-radius: 20px;
   box-shadow: 0px 10px 40px #00000056;
 }
+
 .card-login > h1 {
   color: #00ff88;
   font-weight: 800;
   margin: 0;
 }
+
 .textfield {
   width: 100%;
   display: flex;
@@ -56,6 +65,7 @@ body {
   justify-content: center;
   margin: 10px 0px;
 }
+
 .textfield > input {
   width: 100%;
   border: none;
@@ -68,13 +78,16 @@ body {
   outline: none;
   box-sizing: border-box;
 }
+
 .textfield > label {
   color: #f0ffffde;
   margin-bottom: 10px;
 }
+
 .textfield > input::placeholder {
-  color:  #f0ffff94;
+  color: #f0ffff94;
 }
+
 .btn-login {
   width: 100%;
   padding: 16px 0px;
@@ -90,6 +103,7 @@ body {
   cursor: pointer;
   box-shadow: 0px 10px 40px -12px #00ff8052;
 }
+
 .toggle-link {
   margin-top: 18px;
   text-align: center;
@@ -113,4 +127,22 @@ body {
     box-shadow: 0px 2px 8px -2px #00ff8052;
     text-decoration: none;
   }
+}
+
+.erro {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #f0ffffde;
+  
+}
+
+.sucesso {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: transparent; 
+  color: #f0ffffde;
+  
 }
